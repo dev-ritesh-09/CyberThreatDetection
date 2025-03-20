@@ -10,27 +10,27 @@ import json
 
 app = Flask(__name__)
 
-# 🔹 Configure Google Gemini AI
+# Configure Google Gemini AI
 genai.configure(api_key="GEMINI_API_KEY")
 
-# 🔹 Load AI Models
+# Load AI Models
 phishing_model = tf.keras.models.load_model("phishing_model")
 malware_model = tf.keras.models.load_model("malware_model")
 deepfake_model = tf.keras.models.load_model("deepfake_model")
 
-# 🔹 Blockchain Integration
+# Blockchain Integration
 w3 = Web3(Web3.HTTPProvider("https://rinkeby.infura.io/v3/PROJECT_ID"))
 with open("contract_abi.json") as f:
     ABI = json.load(f)
 cyber_contract = w3.eth.contract(address="0xYourSmartContractAddress", abi=ABI)
 
-# 🔹 AI-Based Phishing Detection (Gemini API)
+# AI-Based Phishing Detection (Gemini API)
 def detect_phishing_gemini(text):
     model = genai.GenerativeModel("gemini-pro")
     response = model.generate_content(f"Analyze this text for phishing risk: {text}")
     return float(response.text)
 
-# 🔹 Blockchain Logging
+# Blockchain Logging
 def log_threat(threat_type, risk_score):
     txn = cyber_contract.functions.logThreat(threat_type, int(risk_score * 100)).buildTransaction({
         "gas": 100000,
