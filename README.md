@@ -24,7 +24,7 @@ This project is an AI-powered cyber threat detection system that leverages machi
 ## Installation
 1. **Clone the repository**
     ```sh
-    git clone https://github.com/your-repo/cyber-threat-detection.git
+    git clone https://github.com/dev-ritesh-09/cyber-threat-detection.git
     cd cyber-threat-detection
     ```
 2. **Create a virtual environment and install dependencies**
